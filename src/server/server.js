@@ -37,8 +37,9 @@ const InputError = require('../exceptions/InputError');
             const newResponse = h.response({
                 status: 'fail',
                 message: response.message
-            })
-            newResponse.code(response.statusCode)
+            });
+            const statusCode = response.statusCode || 500; // default ke 500 jika tidak ada statusCode
+            newResponse.code(statusCode);
             return newResponse;
         }
  
